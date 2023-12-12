@@ -1,36 +1,21 @@
+import 'react-native-gesture-handler';
 import React from 'react';
-import { View, Text, SafeAreaView, StyleSheet } from 'react-native';
-import ColorBox from './components/ColorBox';
+import { NavigationContainer } from '@react-navigation/native';
+import Home from './screens/Home';
+import ColorPalette from './screens/ColorPalette';
+import { createStackNavigator } from '@react-navigation/stack';
+
+const Stack = createStackNavigator();
 
 const App = () => {
   return (
-    <SafeAreaView>
-      <View style={styles.container}>
-        <Text style={styles.heading}>
-          Here are some boxes of different colours
-        </Text>
-        <ColorBox colorName="Cyan" hexCode="#2aa198" />
-        <ColorBox colorName="Blue" hexCode="#268bd2" />
-        <ColorBox colorName="Magenta" hexCode="#d33682" />
-      </View>
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="ColorPalette" component={ColorPalette} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    paddingTop: 50,
-    paddingHorizontal: 10,
-  },
-  heading: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 10,
-  },
-  text: {
-    fontWeight: 'bold',
-    color: 'white',
-  },
-});
 
 export default App;
